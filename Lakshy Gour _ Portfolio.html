@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Lakshy Gour | Portfolio</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+:root{--bg:#04070f;--panel:rgba(8,16,32,.72);--line:rgba(56,232,255,.28);--cyan:#38e8ff;--violet:#9a8cff;--text:#d9e6f7;--dim:#8196b3;
+--sans:"Space Grotesk",system-ui,sans-serif;--mono:"JetBrains Mono",ui-monospace,Consolas,monospace;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-behavior:smooth;background:var(--bg)}
+body{margin:0;background:var(--bg);color:var(--text);font:400 1.05rem/1.65 var(--sans)}
+#fx{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+#rain{position:fixed;inset:0;width:100%;height:100%;z-index:0;opacity:.55}
+body::after{content:"";position:fixed;inset:0;z-index:1;pointer-events:none;background:radial-gradient(ellipse at 50% 30%,transparent 0,rgba(4,7,15,.55) 65%,rgba(4,7,15,.9) 100%)}
+main{position:relative;z-index:2;max-width:980px;margin:0 auto;padding:0 1.25rem 4rem}
+a{color:var(--cyan)}
+:focus-visible{outline:2px solid var(--cyan);outline-offset:3px}
+.hero{min-height:92vh;display:flex;flex-direction:column;justify-content:center;gap:1.1rem}
+.term{font:600 .95rem var(--mono);color:var(--cyan)}
+h1{font:700 clamp(2.6rem,9vw,5.6rem)/1 var(--sans);margin:0;letter-spacing:-.03em;text-shadow:0 0 28px rgba(56,232,255,.45)}
+.role{font:400 clamp(1rem,2.6vw,1.35rem) var(--mono);color:var(--violet);min-height:1.6em}
+.cur{display:inline-block;width:.6ch;background:var(--cyan);animation:b 1s steps(1) infinite}
+@keyframes b{50%{opacity:0}}
+.lede{max-width:56ch;color:var(--dim)}
+.btns{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:.6rem}
+.btn{padding:.75rem 1.3rem;border:1px solid var(--cyan);color:var(--cyan);text-decoration:none;font:600 .95rem var(--mono);background:rgba(56,232,255,.06);clip-path:polygon(12px 0,100% 0,100% calc(100% - 12px),calc(100% - 12px) 100%,0 100%,0 12px);transition:background .2s,color .2s}
+.btn:hover{background:var(--cyan);color:var(--bg)}
+section{padding:3.5rem 0 0}
+h2{font:700 1.9rem var(--sans);margin:0 0 1.2rem;letter-spacing:-.01em}
+h2::before{content:"> ";color:var(--cyan);font-family:var(--mono)}
+.panel{background:var(--panel);border:1px solid var(--line);padding:1.4rem;backdrop-filter:blur(6px);clip-path:polygon(16px 0,100% 0,100% calc(100% - 16px),calc(100% - 16px) 100%,0 100%,0 16px)}
+.grid{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.panel h3{margin:0 0 .4rem;font:600 1.15rem var(--sans)}
+.panel p{margin:0;color:var(--dim)}
+.tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.9rem}
+.tags span{font:400 .8rem var(--mono);padding:.2rem .6rem;border:1px solid var(--line);color:var(--cyan)}
+.soon{border-style:dashed}
+.soon h3{color:var(--violet)}
+footer{margin-top:4rem;padding-top:1.5rem;border-top:1px solid var(--line);color:var(--dim);font:400 .85rem var(--mono)}
+nav{display:flex;flex-wrap:wrap;gap:.8rem 1.4rem;justify-content:space-between;align-items:center;padding:1.2rem 0;font:400 .9rem var(--mono)}
+nav a{color:var(--dim);text-decoration:none}nav a:hover{color:var(--cyan)}
+nav .brand{color:var(--cyan);font-weight:600}
+.links{display:flex;flex-wrap:wrap;gap:1.2rem}
+.hud{display:flex;flex-wrap:wrap;gap:.3rem 1.4rem;font:400 .8rem var(--mono);color:var(--dim)}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);margin-top:1rem}
+.stats div{background:#060b16;padding:.9rem 1rem}
+.stats b{display:block;font:400 .75rem var(--mono);color:var(--dim)}
+.stats span{font:600 1rem var(--sans)}
+.tier{font:600 1.2rem var(--sans);margin:1.6rem 0 .8rem}
+.tier small{font:400 .8rem var(--mono);color:var(--dim);margin-left:.7rem}
+.status{display:inline-block;font:600 .75rem var(--mono);padding:.1rem .5rem;margin-bottom:.6rem}
+.done{color:#5dffb0;border:1px solid #5dffb0}.wip{color:var(--violet);border:1px solid var(--violet)}
+.dispatch{list-style:none;margin:1rem 0 0;padding:0;display:grid;gap:.6rem;font:400 .92rem var(--mono)}
+.dispatch li{display:flex;flex-wrap:wrap;gap:.2rem 1rem}
+.dispatch b{min-width:7.5rem;color:var(--dim);font-weight:400}
+@media (prefers-reduced-motion:reduce){.cur{animation:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<canvas id="rain" aria-hidden="true"></canvas>
+<canvas id="fx" aria-hidden="true"></canvas>
+<main>
+  <nav><a class="brand" href="#top">LG</a><div class="links"><a href="#about">About</a><a href="#projects">Projects</a><a href="#skills">Skills</a><a href="#contact">Contact</a></div></nav>
+  <header class="hero" id="top">
+    <div class="term">$ whoami</div>
+    <h1>Lakshy Gour</h1>
+    <div class="role" aria-live="polite"><span id="typed"></span><span class="cur">&nbsp;</span></div>
+    <p class="lede">First-year B.Tech CSE student at Medicaps University, Indore, specialising in Cybersecurity. I build with Python and ship projects that solve real problems.</p>
+    <div class="hud"><span id="clock">--:--:-- IST</span><span>22.7196° N, 75.8577° E</span><span>Indore, India</span></div>
+    <div class="btns">
+      <a class="btn" href="#projects">View projects</a>
+      <a class="btn" href="mailto:lakshygour2007@gmail.com">Email me</a>
+    </div>
+  </header>
+
+  <section id="about">
+    <h2>About</h2>
+    <div class="panel">
+      <p>I'm studying Computer Science and Engineering at Medicaps University, Indore, with a degree specialisation in Cybersecurity. I've been writing Python for more than two years and am now learning C. I learn fastest by building things. My next goal is to combine software development with security.</p>
+    </div>
+    <div class="stats">
+      <div><b>Degree</b><span>B.Tech CSE, 1st year</span></div>
+      <div><b>University</b><span>Medicaps University, Indore</span></div>
+      <div><b>Specialisation</b><span>Cybersecurity</span></div>
+      <div><b>Core language</b><span>Python, 2+ years</span></div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <h2>Skills and focus</h2>
+    <div class="grid">
+      <div class="panel"><h3>Python</h3><p>Over two years of hands-on experience, from scripts to web apps.</p><div class="tags"><span>Python 3</span><span>Scripting</span><span>Flask</span></div></div>
+      <div class="panel"><h3>Web and APIs</h3><p>Flask backends, AI API integration, and deployment.</p><div class="tags"><span>Flask</span><span>Gemini API</span><span>Deployment</span></div></div>
+      <div class="panel"><h3>Cybersecurity</h3><p>My degree specialisation and the area I'm growing into.</p><div class="tags"><span>Specialisation</span><span>Learning</span></div></div>
+      <div class="panel soon"><h3>C language</h3><p>Currently learning C to build a strong foundation in how programs work.</p><div class="tags"><span>C</span><span>Learning</span></div></div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+    <h3 class="tier">Built<small>projects I've made</small></h3>
+    <div class="grid">
+      <div class="panel">
+        <span class="status wip">Beta version</span>
+        <h3>AI Summarizer</h3>
+        <p>An AI tool I built that reads a PDF and turns it into a short, clear summary. This is a beta testing version. More upgrades are coming, so stay tuned for updates.</p>
+        <div class="tags"><span>Python</span><span>Flask</span><span>Gemini AI</span><span>Beta</span></div>
+        <div class="btns"><a class="btn" id="summarizer-link" href="https://github.com/lakshya159753/SUMMARIZER-AI" target="_blank" rel="noopener">Open project</a></div>
+      </div>
+      <div class="panel">
+        <span class="status done">Prototype</span>
+        <h3>Wireless Charging for EVs</h3>
+        <p>A prototype I built for charging electric vehicles wirelessly, without plugging in a cable.</p>
+        <div class="tags"><span>Electric vehicles</span><span>Wireless charging</span><span>Prototype</span></div>
+      </div>
+    </div>
+    <h3 class="tier">In the lab<small>upcoming</small></h3>
+    <div class="grid">
+      <div class="panel soon">
+        <span class="status wip">Coming soon</span>
+        <h3>More projects are coming</h3>
+        <p>New projects are being built and will appear here as they ship.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <div class="panel">
+      <p>Want to collaborate or talk about a project? Write to me at <a href="mailto:lakshygour2007@gmail.com">lakshygour2007@gmail.com</a>.</p>
+      <ul class="dispatch">
+        <li><b>Email</b><a href="mailto:lakshygour2007@gmail.com">lakshygour2007@gmail.com</a></li>
+        <li><b>University</b>Medicaps University, Indore</li>
+        <li><b>Program</b>B.Tech CSE (Cybersecurity), 1st year</li>
+        <li><b>Location</b>22.7196° N, 75.8577° E, Indore, India</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer>Lakshy Gour · Medicaps University, Indore · B.Tech CSE, 1st year (Cybersecurity)</footer>
+</main>
+
+<script>
+(function(){
+  var c=document.getElementById('rain'),x=c.getContext('2d'),fs=16,cols,drops,W,H,px=-1000,py=-1000,R=80;
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function size(){
+    var d=window.devicePixelRatio||1;W=innerWidth;H=innerHeight;
+    c.width=W*d;c.height=H*d;x.setTransform(d,0,0,d,0,0);
+    cols=Math.ceil(W/fs);drops=[];
+    for(var i=0;i<cols;i++)drops[i]=Math.random()*-H/fs;
+    x.fillStyle='#04070f';x.fillRect(0,0,W,H);
+  }
+  function draw(){
+    x.fillStyle='rgba(4,7,15,.09)';x.fillRect(0,0,W,H);
+    x.font=fs+'px "JetBrains Mono",monospace';
+    for(var i=0;i<cols;i++){
+      var y=drops[i]*fs;
+      var pulled=Math.abs(i*fs+fs/2-px)<R&&Math.abs(y-py)<R;
+      if(!pulled){x.fillStyle='#e9fdff';x.fillText(Math.random()<.5?'0':'1',i*fs,y);
+      x.fillStyle=i%7===0?'#9a8cff':'#38e8ff';x.fillText(Math.random()<.5?'0':'1',i*fs,y-fs);}
+      if(y>H&&Math.random()>.975)drops[i]=0;
+      drops[i]+=.6+(i%5)*.12;
+    }
+  }
+  var fx=document.getElementById('fx'),f=fx.getContext('2d'),P=[],act=false;
+  for(var k=0;k<44;k++){var a=Math.random()*6.283,r=Math.sqrt(Math.random())*R;P.push({ox:Math.cos(a)*r,oy:Math.sin(a)*r,x:-1000,y:-1000,s:.07+Math.random()*.12,v:'0'});}
+  function fxSize(){var d=window.devicePixelRatio||1;fx.width=innerWidth*d;fx.height=innerHeight*d;f.setTransform(d,0,0,d,0,0);}
+  function off(){px=-1000;py=-1000;act=false;}
+  fxSize();addEventListener('resize',fxSize);
+  if(!reduce){
+    addEventListener('pointermove',function(e){px=e.clientX;py=e.clientY;act=true;});
+    addEventListener('pointerup',function(e){if(e.pointerType==='touch')off();});
+    document.addEventListener('mouseout',function(e){if(!e.relatedTarget)off();});
+    (function loop(){
+      f.clearRect(0,0,innerWidth,innerHeight);
+      f.font='15px "JetBrains Mono",monospace';f.shadowColor='#38e8ff';f.shadowBlur=8;
+      for(var j=0;j<P.length;j++){
+        var p=P[j];
+        if(!act){p.x=-1000;p.y=-1000;continue;}
+        if(p.x<-500){p.x=px;p.y=py;}
+        p.x+=(px+p.ox+(Math.random()-.5)*5-p.x)*p.s;
+        p.y+=(py+p.oy+(Math.random()-.5)*5-p.y)*p.s;
+        if(Math.random()<.12)p.v=Math.random()<.5?'0':'1';
+        f.fillStyle=Math.random()<.12?'#ffffff':'#38e8ff';
+        f.fillText(p.v,p.x,p.y);
+      }
+      requestAnimationFrame(loop);
+    })();
+  }
+  size();addEventListener('resize',size);
+  if(reduce){draw();}else{setInterval(draw,45);}
+
+  var roles=['First-year B.Tech CSE | Cybersecurity','Python developer','AI project builder'],t=document.getElementById('typed'),ri=0,ci=0,del=false;
+  function type(){
+    var w=roles[ri];
+    if(reduce){t.textContent=roles[0];return;}
+    t.textContent=w.slice(0,ci);
+    if(!del&&ci<w.length){ci++;setTimeout(type,70);}
+    else if(!del){del=true;setTimeout(type,1400);}
+    else if(ci>0){ci--;setTimeout(type,35);}
+    else{del=false;ri=(ri+1)%roles.length;setTimeout(type,300);}
+  }
+  var ck=document.getElementById('clock');
+  function tick(){ck.textContent=new Date().toLocaleTimeString('en-GB',{timeZone:'Asia/Kolkata'})+' IST';}
+  tick();setInterval(tick,1000);
+  type();
+})();
+</script>
+</body>
+</html>
